@@ -72,6 +72,4 @@ dtmail_SOURCES = AliasListUiItem.C               AlternatesListUiItem.C \
 		 options_ui.C                    options_util.C
 
 install-exec-hook:
-	# chown root $(DESTDIR)$(bindir)/dtmail
-	# chgrp mail $(DESTDIR)$(bindir)/dtmail
 	chmod 2755 $(DESTDIR)$(bindir)/dtmail
