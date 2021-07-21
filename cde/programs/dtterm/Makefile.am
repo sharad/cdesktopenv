@@ -52,7 +52,6 @@ install:
 	@TIC@ dtterm.ti
 
 install-exec-hook:
-	chown root $(DESTDIR)$(bindir)/dtterm
 if !HAS_UTEMPTER_LIBRARY
 	chmod 4755 $(DESTDIR)$(bindir)/dtterm
 endif

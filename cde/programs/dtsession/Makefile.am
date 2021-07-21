@@ -131,7 +131,6 @@ sys.session.ive: sys.session.src
 # systems without a PAM library need dtsession to be SUID root
 
 install-exec-hook:
-	chown root $(DESTDIR)$(bindir)/dtsession
 if HAS_PAM_LIBRARY
 	chmod 755 $(DESTDIR)$(bindir)/dtsession
 else
