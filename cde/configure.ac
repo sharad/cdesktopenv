@@ -241,9 +241,9 @@ CP="cp -f"
 AC_SUBST(CP)
 
 dnl these should be configurable someday...
-CDE_INSTALLATION_TOP="$ac_default_prefix"
-CDE_LOGFILES_TOP=/var/dt
-CDE_CONFIGURATION_TOP=/etc/dt
+CDE_INSTALLATION_TOP="$prefix"
+CDE_LOGFILES_TOP=/var/log/dt
+CDE_CONFIGURATION_TOP="$prefix/etc/dt"
 CDE_USER_TOP=.dt
 
 AC_SUBST(CDE_INSTALLATION_TOP)
