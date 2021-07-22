@@ -381,9 +381,9 @@ AC_CHECK_PROGS(TIC, tic, :)
 dnl headers
 AC_HEADER_STDC
 AC_CHECK_HEADERS([locale.h security/pam_appl.h utempter.h])
-AC_CHECK_HEADER (rpc/rpc.h, [CFLAGS="${CFLAGS} -DOPT_TIRPC";
-                             CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC";
-                             TIRPCLIB=-ltirpc])
+dnl AC_CHECK_HEADER (rpc/rpc.h, [CFLAGS="${CFLAGS} -DOPT_TIRPC";
+dnl                              CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC";
+dnl                              TIRPCLIB=-ltirpc])
 
 dnl libraries
 AC_CHECK_LIB(m, cosf)
@@ -394,12 +394,10 @@ AC_CHECK_LIB(Xinerama, XineramaQueryScreens,
                 [AC_MSG_ERROR([libXinerama not found])], $X_LIBS)
 
 dnl Special check for tirpc...
-dnl AC_CHECK_LIB(tirpc, svc_register,
-dnl       [CFLAGS="${CFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
-dnl        CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
-dnl        TIRPCLIB=-ltirpc])
 AC_CHECK_LIB(tirpc, svc_register,
-             [TIRPCLIB=-ltirpc])
+      [CFLAGS="${CFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
+       CXXFLAGS="${CXXFLAGS} -DOPT_TIRPC -I/usr/include/tirpc";
+       TIRPCLIB=-ltirpc])
 AC_SUBST(TIRPCLIB)
 
 dnl
@@ -414,7 +412,7 @@ AC_CHECK_LIB(k5crypto,
              AC_MSG_ERROR([could not find k5crypto which is needed for GSSAPI support]), -lkrb5)
 
 dnl jpeg
-AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
+AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"; LIB="$LIB -ljpeg"],
              [AC_MSG_ERROR([libjpeg not found, please install it])],
              [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_SUBST(JPEGLIB)
