@@ -9,7 +9,7 @@ tradcpp_SOURCES = array.c directive.c files.c macro.h output.h		\
 
 
 tradcpp_LDADD = -lk5crypto -lgssapi_krb5
-# tradcpp_DEPENDENCIES = $(LTDLDEPS) foo1.la
+tradcpp_DEPENDENCIES = -lk5crypto -lgssapi_krb5 # $(LTDLDEPS) foo1.la
 
 
 # myprog_LDFLAGS = -export-dynamic
