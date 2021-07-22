@@ -403,16 +403,16 @@ AC_SUBST(TIRPCLIB)
 dnl
 AC_CHECK_LIB(gssapi_krb5,
              gss_init_sec_context,
-             LIBS="$LIBS -lgssapi_krb5",
-             AC_MSG_ERROR([could not find libgssapi_krb5 which is needed for GSSAPI support]), -lkrb5)
+             [EXTRA_LIBS="$EXTRA_LIBS -lgssapi_krb5"],
+             AC_MSG_ERROR([could not find libgssapi_krb5 which is needed for GSSAPI support]), [-lkrb5])
 dnl
 AC_CHECK_LIB(k5crypto,
              krb5_encrypt,
-             LIBS="$LIBS -lk5crypto",
-             AC_MSG_ERROR([could not find k5crypto which is needed for GSSAPI support]), -lkrb5)
+             [EXTRA_LIBS="$EXTRA_LIBS -lk5crypto"],
+             AC_MSG_ERROR([could not find k5crypto which is needed for GSSAPI support]), [-lkrb5])
 
 dnl jpeg
-AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"; LIB="$LIB -ljpeg"],
+AC_CHECK_LIB(jpeg, jpeg_read_header, [JPEGLIB="-ljpeg"],
              [AC_MSG_ERROR([libjpeg not found, please install it])],
              [${EXTRA_INCS} ${EXTRA_LIBS}])
 AC_SUBST(JPEGLIB)
